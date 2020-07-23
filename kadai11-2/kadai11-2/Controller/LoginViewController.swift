@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
@@ -23,6 +23,9 @@ class LoginViewController: UIViewController {
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
     }
+
+    
+    
     
 
     /*

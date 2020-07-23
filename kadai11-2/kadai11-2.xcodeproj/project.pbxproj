@@ -20,6 +20,10 @@
 		32B66A8124C49DD700994533 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B66A8024C49DD700994533 /* LoginViewController.swift */; };
 		32B66A8324C4A4E700994533 /* 11-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 32B66A8224C4A4E700994533 /* 11-2.json */; };
 		32B66A8524C4A52600994533 /* 11-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 32B66A8424C4A52600994533 /* 11-1.json */; };
+		32B66A8724C7DBCF00994533 /* forest.mov in Resources */ = {isa = PBXBuildFile; fileRef = 32B66A8624C7DBCE00994533 /* forest.mov */; };
+		32B66A8924C7DE0A00994533 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B66A8824C7DE0A00994533 /* SelectViewController.swift */; };
+		32B66A8B24C8233500994533 /* BooklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B66A8A24C8233500994533 /* BooklistViewController.swift */; };
+		32B66A8D24C8784800994533 /* addViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B66A8C24C8784800994533 /* addViewController.swift */; };
 		84597072D19102BF0028EDBE /* Pods_kadai11_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3C913D380CAA8543A8E2AF /* Pods_kadai11_2.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +44,10 @@
 		32B66A8024C49DD700994533 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		32B66A8224C4A4E700994533 /* 11-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "11-2.json"; sourceTree = "<group>"; };
 		32B66A8424C4A52600994533 /* 11-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "11-1.json"; sourceTree = "<group>"; };
+		32B66A8624C7DBCE00994533 /* forest.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forest.mov; sourceTree = "<group>"; };
+		32B66A8824C7DE0A00994533 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		32B66A8A24C8233500994533 /* BooklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooklistViewController.swift; sourceTree = "<group>"; };
+		32B66A8C24C8784800994533 /* addViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addViewController.swift; sourceTree = "<group>"; };
 		3B3C913D380CAA8543A8E2AF /* Pods_kadai11_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kadai11_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEEB5445AA482B58C170E908 /* Pods-kadai11-2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kadai11-2.debug.xcconfig"; path = "Target Support Files/Pods-kadai11-2/Pods-kadai11-2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +97,7 @@
 				32B66A7624C49A5E00994533 /* 11-3.json */,
 				32B66A7924C49A6100994533 /* 11-4.json */,
 				32B66A7E24C49A6D00994533 /* 11-5.json */,
+				32B66A8624C7DBCE00994533 /* forest.mov */,
 			);
 			path = "kadai11-2";
 			sourceTree = "<group>";
@@ -99,6 +108,9 @@
 				32B66A6324C48CB000994533 /* ViewController.swift */,
 				32B66A7424C4914300994533 /* ScrollViewController.swift */,
 				32B66A8024C49DD700994533 /* LoginViewController.swift */,
+				32B66A8824C7DE0A00994533 /* SelectViewController.swift */,
+				32B66A8A24C8233500994533 /* BooklistViewController.swift */,
+				32B66A8C24C8784800994533 /* addViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +144,7 @@
 				32B66A5924C48CB000994533 /* Frameworks */,
 				32B66A5A24C48CB000994533 /* Resources */,
 				B472082A24B68C6D8C4377D8 /* [CP] Embed Pods Frameworks */,
+				E7430134D1BCD2C56EF06273 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,6 +196,7 @@
 				32B66A6224C48CB000994533 /* art.scnassets in Resources */,
 				32B66A6C24C48CB100994533 /* LaunchScreen.storyboard in Resources */,
 				32B66A8324C4A4E700994533 /* 11-2.json in Resources */,
+				32B66A8724C7DBCF00994533 /* forest.mov in Resources */,
 				32B66A6924C48CB100994533 /* Assets.xcassets in Resources */,
 				32B66A8524C4A52600994533 /* 11-1.json in Resources */,
 				32B66A7F24C49A6D00994533 /* 11-5.json in Resources */,
@@ -234,6 +248,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E7430134D1BCD2C56EF06273 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kadai11-2/Pods-kadai11-2-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kadai11-2/Pods-kadai11-2-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kadai11-2/Pods-kadai11-2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -241,10 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B66A8D24C8784800994533 /* addViewController.swift in Sources */,
+				32B66A8924C7DE0A00994533 /* SelectViewController.swift in Sources */,
 				32B66A8124C49DD700994533 /* LoginViewController.swift in Sources */,
 				32B66A6424C48CB000994533 /* ViewController.swift in Sources */,
 				32B66A7524C4914300994533 /* ScrollViewController.swift in Sources */,
 				32B66A6024C48CB000994533 /* AppDelegate.swift in Sources */,
+				32B66A8B24C8233500994533 /* BooklistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

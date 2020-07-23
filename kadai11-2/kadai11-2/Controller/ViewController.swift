@@ -14,6 +14,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    let defaultConfiguration: ARWorldTrackingConfiguration = {
+        let configuration = ARWorldTrackingConfiguration()
+        
+        let images = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil)
+        configuration.detectionImages = images
+            configuration.maximumNumberOfTrackedImages = 1
+            return configuration
+        }()
+    
+    let imageConfiguration: ARImageTrackingConfiguration = {
+        let configuration = ARImageTrackingConfiguration()
+        
+        let images = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil)
+        configuration.trackingImages = images!
+        configuration.maximumNumberOfTrackedImages = 1
+        return configuration
+    }()
+    
+    private var buttonNode: SCNNode!
+    private var card2Node: SCNNode!
+    private var errorNode: SCNNode!
+    
+    private let feedback = UIImpactFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +48,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
+        
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+    
+        // デフォルトのライト
+        sceneView.autoenablesDefaultLighting = true
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -45,6 +74,54 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    // ピカチューが表示されるNodeを作成
+    func createPikaNode() -> SCNNode {
+        let pikaScene = SCNScene(named: "art.scnassets/Pikachu/PikachuF_ColladaMax.scn")!
+
+        let pikaNode = SCNNode()
+
+        // PikachuF_ColladaMax.scnファイルの中のchildNodesにピカチューがいるので、取り出して、pikaNodeに追加
+        for childNode in pikaScene.rootNode.childNodes {
+            pikaNode.addChildNode(childNode)
+        }
+
+        // ピカチューの高さを調整する
+        // pikaNodeの境界線の最小値と最大値を取得
+        let (min, max) = (pikaNode.boundingBox)
+        // Y軸方向の最大値と最小値の差がデフォルトの高さ
+        let h = max.y - min.y
+        // 0.4メートルを100%としたときの倍率を計算(例：hが1mだったとき、0.4)
+        let magnification = 0.4 / h
+        // x, y, z軸それぞれ上で計算した倍率をかけ算。高さは0.4ｍとなり、x, z軸方向も縦横高さ比を保ったまま拡大or縮小する。
+        pikaNode.scale = SCNVector3(magnification, magnification, magnification)
+
+        return pikaNode
+    }
+
+    
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        guard let imageAnchor = anchor as? ARImageAnchor else {
+            return nil
+        }
+        
+        switch imageAnchor.referenceImage.name {
+        case "ariimage":
+            DispatchQueue.main.async {
+                self.feedback.impactOccurred()
+            }
+            let pikaNode = createPikaNode()
+            return pikaNode
+        case "arnikuko":
+            DispatchQueue.main.async {
+                self.feedback.impactOccurred()
+            }
+            let pikaNode = createPikaNode()
+            return pikaNode
+        default:
+            return nil
+        }
     }
 
     // MARK: - ARSCNViewDelegate
